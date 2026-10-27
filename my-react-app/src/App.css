@@ -1,0 +1,272 @@
+/* General styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #18233f;
+  background: #f7f9ff;
+}
+
+/* Navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: white;
+  border-bottom: 1px solid #e9edf5;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 21px;
+  color: #273b77;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #59647a;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: #5148e5;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 85px 20px 100px;
+  background: linear-gradient(135deg, #edf4ff, #f4f1ff);
+}
+
+.eyebrow {
+  color: #6672a0;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.25;
+  margin: 18px 0;
+}
+
+.hero h1 span {
+  color: #5548e8;
+}
+
+.hero-description {
+  max-width: 470px;
+  margin: 0 auto 28px;
+  color: #6c7488;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.explore-btn {
+  display: inline-block;
+  padding: 13px 24px;
+  color: white;
+  background: #5146e5;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.explore-btn:hover {
+  background: #3930bf;
+}
+
+/* Upcoming events section */
+.events-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 24px;
+}
+
+.events-section h2 {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.section-description {
+  color: #788096;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Event cards in horizontal grid */
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Individual event card */
+.event-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+  background: white;
+  border: 1px solid #edf0f7;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px #26345b0a;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px #26345b15;
+}
+
+/* Card image area */
+.event-image {
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #3730d8, #6557f4);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Event details */
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding-top: 8px;
+}
+
+.category {
+  color: #6672a0;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.event-details h3 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.event-description {
+  color: #6c7488;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.event-details > p:not(.category):not(.event-description) {
+  font-size: 12px;
+  color: #59647a;
+  margin: 8px 0;
+}
+
+/* Buttons */
+.event-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+button {
+  border: none;
+  padding: 10px 13px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.register-btn {
+  background: #5146e5;
+  color: white;
+}
+
+.favorite-btn {
+  background: #f2edda;
+  color: #75632d;
+}
+
+.remove-btn {
+  background: #f9e8ed;
+  color: #b33e5c;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: white;
+  border-top: 1px solid #edf0f7;
+  padding: 28px;
+  color: #6c7488;
+  font-size: 13px;
+}
+
+/* Tablets: two columns */
+@media (max-width: 900px) {
+  .event-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
+
+/* Mobile: one column */
+@media (max-width: 550px) {
+  .navbar {
+    padding: 18px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .hero {
+    padding: 60px 18px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .events-section {
+    padding: 40px 16px;
+  }
+
+  .event-list {
+    grid-template-columns: 1fr;
+  }
+}

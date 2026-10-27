@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events and Forms</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 30px;
+            color: #1f2937;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000010;
+        }
+
+        input {
+            display: block;
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .challenge {
+            background-color: #fff3d6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Events and Forms</h1>
+    <p class="subtitle"></p>
+
+    <!-- Task 1 -->
+    <div class="card">
+        <h3>1. Click Event Listener</h3>
+
+        <button id="clickBtn">Click Me</button>
+        <p id="status">Waiting for your click...</p>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="card">
+        <h3>2. Live Character Count</h3>
+
+        <input type="text" id="message" placeholder="Type something here">
+
+        <p>Character count: <span id="count">0</span></p>
+    </div>
+
+    <!-- Task 3 and 4 -->
+    <div class="card">
+        <h3>3. Registration Form</h3>
+
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p id="feedback"></p>
+    </div>
+
+    <!-- Challenge -->
+    <div class="challenge">
+        <h3>Challenge: Event Delegation</h3>
+
+        <div id="eventCards">
+            <div class="card">
+                <h4>Event 1 — Workshop</h4>
+                <button class="joinBtn">Join</button>
+            </div>
+
+            <div class="card">
+                <h4>Event 2 — Coding Contest</h4>
+                <button class="joinBtn">Join</button>
+            </div>
+
+            <div class="card">
+                <h4>Event 3 — Tech Talk</h4>
+                <button class="joinBtn">Join</button>
+            </div>
+        </div>
+
+        <p id="joinStatus"></p>
+    </div>
+
+    <script>
+        // Task 1: Click event listener
+        const clickBtn = document.getElementById("clickBtn");
+        const status = document.getElementById("status");
+
+        clickBtn.addEventListener("click", function() {
+            status.textContent = "Button clicked successfully!";
+        });
+
+
+        // Task 2: Live character count
+        const message = document.getElementById("message");
+        const count = document.getElementById("count");
+
+        message.addEventListener("input", function() {
+            count.textContent = message.value.length;
+        });
+
+
+        // Task 3 and 4: Registration form
+        const form = document.getElementById("registrationForm");
+        const feedback = document.getElementById("feedback");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (name === "" || email === "") {
+                feedback.textContent = "Error: Please fill in both fields.";
+                feedback.className = "error";
+            } else {
+                feedback.textContent = "Registration successful!";
+                feedback.className = "success";
+            }
+        });
+
+
+        // Challenge: One parent listener for all Join buttons
+        const eventCards = document.getElementById("eventCards");
+        const joinStatus = document.getElementById("joinStatus");
+
+        eventCards.addEventListener("click", function(event) {
+            if (event.target.classList.contains("joinBtn")) {
+                const card = event.target.closest(".card");
+                const eventName = card.querySelector("h4").textContent;
+
+                joinStatus.textContent =
+                    "You joined: " + eventName;
+            }
+        });
+    </script>
+
+</body>
+</html>
